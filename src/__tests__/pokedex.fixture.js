@@ -1,22 +1,4 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Pokedex</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="src/index.css">
-</head>
-
-<body>
-
-<div class="container">
-    <h1>Pokedex</h1>
-</div>
-
-<div class="container">
+export default `<div class="container">
     <div class="row">
         <p>Hay <strong id="total-pokemones">...</strong> pokemones en la pokedex</p>
     </div>
@@ -78,8 +60,4 @@
             </div>
         </div>
     </div>
-</div>
-<script type="module" src="dist/index.js"></script>
-</body>
-
-</html>
+</div>`;

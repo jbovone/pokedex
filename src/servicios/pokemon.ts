@@ -1,34 +1,28 @@
-/**
- * @typedef {import('../entidades/pokemon').default} Pokemon
- * @typedef {import('../entidades/listadoPokemones').default} ListadoPokemones
- */
-
 import {
   cargarPokemon as cargarPokemonDeApi,
   cargarPokemones as cargarPokemonesDeApi,
-} from '../api/pokemon.js';
+} from "../api/pokemon.js";
 
 import {
   cargarPokemon as cargarPokemonDeLocalStorage,
   cargarPokemones as cargarPokemonesDeLocalStorage,
   guardarPokemon,
   guardarPokemones,
-} from '../storage/pokemon.js';
-import { mapearListadoPokemones, mapearPokemon } from '../mapeadores/pokemon.js';
+} from "../storage/pokemon.js";
+import {
+  mapearListadoPokemones,
+  mapearPokemon,
+} from "../mapeadores/pokemon.js";
+import Pokemon from "../entidades/pokemon.js";
+import ListadoPokemones from "../entidades/listadoPokemones.js";
 
 export const LIMITE_POKEMONES = 20;
 
-/**
- * @param {String} id
- * @returns {Pokemon}
- */
-export async function cargarPokemon(id) {
+export async function cargarPokemon(id: string) {
   if (id === undefined) {
-    throw new Error('Se necesita un identificador para cargar un pokemón');
+    throw new Error("Se necesita un identificador para cargar un pokemón");
   }
-
-  let pokemon;
-
+  let pokemon: Pokemon;
   try {
     pokemon = cargarPokemonDeLocalStorage(id);
   } catch (e) {
@@ -40,12 +34,10 @@ export async function cargarPokemon(id) {
   return pokemon;
 }
 
-/**
- * @param {String} offset
- * @param {String} limite
- * @return {ListadoPokemones}
- */
-export async function cargarPokemones(offset = 0, limite = LIMITE_POKEMONES) {
+export async function cargarPokemones(
+  offset = 0,
+  limite = LIMITE_POKEMONES
+): Promise<ListadoPokemones> {
   try {
     return cargarPokemonesDeLocalStorage(offset, limite);
   } catch (e) {
